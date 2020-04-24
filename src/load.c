@@ -2196,7 +2196,7 @@ static cyaml_err_t cyaml__map_key(
 	if (cyaml__mapping_bitfieid_check(ctx) == true) {
 		cyaml__log(ctx->config, CYAML_LOG_ERROR,
 				"Load: Mapping field already seen: %s\n", key);
-		return CYAML_ERR_UNEXPECTED_EVENT;
+		return CYAML_ERR_DUPLICATE_MAPPING_KEY;
 	}
 
 	cyaml__mapping_bitfieid_set(ctx);
