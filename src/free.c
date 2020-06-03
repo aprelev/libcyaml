@@ -154,7 +154,8 @@ static inline cyaml_err_t cyaml__read_union_discriminant(
 
 	idx = cyaml__get_mapping_field_idx(cfg, schema, union_disc_field);
 	if (idx != CYAML_FIELDS_IDX_NONE &&
-	    (schema->mapping.fields + idx)->value.type == CYAML_ENUM) {
+	    (schema->mapping.fields + idx)->value.type == CYAML_ENUM &&
+	    !((schema->mapping.fields + idx)->value.flags & CYAML_FLAG_POINTER)) {
 		cyaml_err_t err;
 		const cyaml_schema_field_t *disc = schema->mapping.fields + idx;
 		uint64_t union_discriminant = cyaml_data_read(
